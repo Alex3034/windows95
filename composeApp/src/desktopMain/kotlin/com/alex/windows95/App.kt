@@ -10,12 +10,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.alex.windows95.splash.SplashScreen
+import com.alex.windows95.ui.Windows95Typography
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
 fun App() {
-    MaterialTheme {
+    MaterialTheme(typography = Windows95Typography()) {
         var initializing: Boolean by remember { mutableStateOf(true) }
 
         Box(Modifier.fillMaxSize()) {
