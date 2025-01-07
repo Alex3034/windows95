@@ -20,7 +20,7 @@ fun App() {
 
         Box(Modifier.fillMaxSize()) {
             if (initializing) {
-                SplashScreen()
+                SplashScreen { initializing = false }
             } else {
                 //Windows 95
             }
