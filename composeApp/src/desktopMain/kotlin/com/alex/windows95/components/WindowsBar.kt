@@ -22,12 +22,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alex.windows95.ui.backgroundComponent
+import com.sun.jdi.connect.Connector.SelectedArgument
 import org.jetbrains.compose.resources.painterResource
 import windows95.composeapp.generated.resources.Res
 import windows95.composeapp.generated.resources.winlogo
 
 @Composable
-fun WindowBar() {
+fun WindowBar(onWindowsButtonSelected: () -> Unit) {
     Column {
         Box(
             Modifier
@@ -47,7 +48,7 @@ fun WindowBar() {
                     .padding(start = 8.dp)
                     .height(36.dp)
                     .width(95.dp),
-                onClick = {}
+                onClick = { onWindowsButtonSelected() }
             ) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
