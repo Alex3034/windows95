@@ -12,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import com.alex.windows95.components.WindowBar
 import com.alex.windows95.components.windowsmenu.WindowsMenuScreen
+import com.alex.windows95.extensions.clickableWithoutRipple
 
 @Composable
 fun Windows95Screen() {
@@ -23,7 +24,7 @@ fun Windows95Screen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .clickable { showWindowsMenu = false }
+                .clickableWithoutRipple { showWindowsMenu = false }
         ) {
             WindowsMenuScreen(showWindowsMenu)
         }
