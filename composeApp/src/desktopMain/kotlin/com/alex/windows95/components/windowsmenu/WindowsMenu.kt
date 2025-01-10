@@ -29,7 +29,7 @@ import windows95.composeapp.generated.resources.ic_settings
 import windows95.composeapp.generated.resources.ic_shutdown
 
 @Composable
-fun WindowsMenu() {
+fun WindowsMenu(showSubMenu: (Float?) -> Unit) {
     Column(
         Modifier.height(350.dp)
             .background(backgroundComponent)
@@ -56,14 +56,39 @@ fun WindowsMenu() {
                     .fillMaxHeight()
                     .width(200.dp)
             ) {
-                WindowsMenuItem("Programs", painterResource(Res.drawable.ic_programs))
-                WindowsMenuItem("Documents", painterResource(Res.drawable.ic_documents))
-                WindowsMenuItem("Settings", painterResource(Res.drawable.ic_settings))
-                WindowsMenuItem("Find", painterResource(Res.drawable.ic_find))
-                WindowsMenuItem("Help", painterResource(Res.drawable.ic_help))
-                WindowsMenuItem("Run...", painterResource(Res.drawable.ic_run))
+                WindowsMenuItem(
+                    text = "Programs",
+                    painter = painterResource(Res.drawable.ic_programs),
+                    expandable = true
+                ) { showSubMenu(it) }
+                WindowsMenuItem(
+                    text = "Documents",
+                    painter = painterResource(Res.drawable.ic_documents),
+                    expandable = true
+                ) { showSubMenu(it) }
+                WindowsMenuItem(
+                    text = "Settings",
+                    painter = painterResource(Res.drawable.ic_settings),
+                    expandable = true
+                ) { showSubMenu(it) }
+                WindowsMenuItem(
+                    text = "Find",
+                    painter = painterResource(Res.drawable.ic_find),
+                    expandable = true
+                ) { showSubMenu(it) }
+                WindowsMenuItem(
+                    text = "Help",
+                    painter = painterResource(Res.drawable.ic_help)
+                ) { showSubMenu(it) }
+                WindowsMenuItem(
+                    text = "Run...",
+                    painter = painterResource(Res.drawable.ic_run)
+                ) { showSubMenu(it) }
                 //DIVIDER
-                WindowsMenuItem("Shut Down...", painterResource(Res.drawable.ic_shutdown))
+                WindowsMenuItem(
+                    text = "Shut Down...",
+                    painter = painterResource(Res.drawable.ic_shutdown)
+                ) { showSubMenu(it) }
             }
         }
     }
