@@ -38,6 +38,7 @@ fun WindowsMenuItem(
     text: String,
     painter: Painter,
     expandable: Boolean = false,
+    isSubMenu: Boolean = false,
     showSubMenu: (Float?) -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -52,8 +53,11 @@ fun WindowsMenuItem(
             isHovered && expandable -> {
                 showSubMenu(globalHeightPosition)
             }
+
             expandable -> {}
-            isHovered -> { showSubMenu(null) }
+            isHovered -> {
+                showSubMenu(null)
+            }
         }
     }
 
@@ -70,7 +74,7 @@ fun WindowsMenuItem(
     ) {
         Spacer(Modifier.width(6.dp))
         Image(
-            modifier = Modifier.size(40.dp),
+            modifier = Modifier.size(if (isSubMenu) 20.dp else 40.dp),
             painter = painter,
             contentDescription = null,
             contentScale = ContentScale.Fit
