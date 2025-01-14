@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import com.alex.windows95.components.DraggableFolder
 import com.alex.windows95.components.WindowBar
+import com.alex.windows95.components.clearFolders
 import com.alex.windows95.components.windowsmenu.WindowsMenuScreen
 import com.alex.windows95.extensions.clickableWithoutRipple
 import com.alex.windows95.model.FolderModel
@@ -28,13 +29,18 @@ fun Windows95Screen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(1f)
-                .clickableWithoutRipple { showWindowsMenu = false }
+                .clickableWithoutRipple {
+                    showWindowsMenu = false
+                    folders = clearFolders(folders)
+                }
         ) {
             folders.forEach { folder ->
                 DraggableFolder(folder, onMove = { newPosition ->
                     folders = folders.map {
                         if (it.id == folder.id) it.copy(position = newPosition) else it
                     }
+                }, onTapFolder = { id ->
+                    folders = folders.map { if(id == it.id) it.copy(selected = true) else it}
                 })
             }
             WindowsMenuScreen(showWindowsMenu)
