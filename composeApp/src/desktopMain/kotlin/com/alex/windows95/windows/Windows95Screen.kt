@@ -35,13 +35,21 @@ fun Windows95Screen() {
                 }
         ) {
             folders.forEach { folder ->
-                DraggableFolder(folder, onMove = { newPosition ->
-                    folders = folders.map {
-                        if (it.id == folder.id) it.copy(position = newPosition) else it
-                    }
-                }, onTapFolder = { id ->
-                    folders = folders.map { if(id == it.id) it.copy(selected = true) else it}
-                })
+                DraggableFolder(
+                    folderModel = folder,
+                    onMove = { newPosition ->
+                        folders = folders.map {
+                            if (it.id == folder.id) it.copy(position = newPosition) else it
+                        }
+                    },
+                    onTapFolder = { id ->
+                        folders = folders.map { if (id == it.id) it.copy(selected = true) else it }
+                    },
+                    onRename = { newName ->
+                        folders = folders.map {
+                            if (it.id == folder.id) it.copy(name = newName) else it
+                        }
+                    })
             }
             WindowsMenuScreen(showWindowsMenu)
         }
