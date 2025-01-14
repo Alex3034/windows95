@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.PathNode
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.unit.dp
@@ -48,7 +49,7 @@ fun DraggableFolder(folderModel: FolderModel, onMove: (Offset) -> Unit) {
                 painter = painterResource(Res.drawable.ic_folder),
                 contentDescription = "folder"
             )
-            Text(folderModel.name)
+            Text(text = folderModel.name, color = Color.White)
         }
     }
 }
