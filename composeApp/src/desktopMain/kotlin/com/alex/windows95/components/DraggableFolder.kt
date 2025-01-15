@@ -40,7 +40,8 @@ fun DraggableFolder(
     folderModel: FolderModel,
     onMove: (Offset) -> Unit,
     onTapFolder: (Int) -> Unit,
-    onRename: (String) -> Unit
+    onRename: (String) -> Unit,
+    onDoubleTapFolder: (FolderModel) -> Unit
 ) {
     var offset by remember { mutableStateOf(folderModel.position) }
     val textColor = if (folderModel.selected) White else Black
@@ -74,7 +75,7 @@ fun DraggableFolder(
                         lastClickTime = currentTime
                     },
                     onPress = { onTapFolder(folderModel.id) },
-                    onDoubleTap = {}
+                    onDoubleTap = { onDoubleTapFolder(folderModel) }
                 )
             }
     ) {

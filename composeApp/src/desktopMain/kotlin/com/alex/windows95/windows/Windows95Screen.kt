@@ -49,6 +49,9 @@ fun Windows95Screen() {
                         folders = folders.map {
                             if (it.id == folder.id) it.copy(name = newName) else it
                         }
+                    },
+                    onDoubleTapFolder = {
+                        //
                     })
             }
             WindowsMenuScreen(showWindowsMenu)
